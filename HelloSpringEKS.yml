@@ -2,33 +2,33 @@ apiVersion: v1
 kind: ReplicationController
 metadata:
   labels:
-    name: HelloSpringEKS
-  name: HelloSpringEKS
+    name: hellospringeks
+  name: hellospringeks
 spec:
   replicas: 1
   template:
     metadata:
       labels:
-        name: HelloSpringEKS
+        name: hellospringeks
     spec:
       containers:
       - image: naresh240/hellospringeks
         name: hellospringeks
         ports:
         - name: hellospringeks
-          containerPort: 8080      
+          containerPort: 8080
 ---
 # Node Port Service
 apiVersion: v1
 kind: Service
 metadata:
   labels:
-    name: HelloSpringEKS
-  name: HelloSpringEKS
+    name: hellospringeks
+  name: hellospringeks
 spec:
   type: LoadBalancer
   ports:
     - port: 8080
       targetPort: 8080
   selector:
-    name: HelloSpringEKS
+    name: hellospringeks
