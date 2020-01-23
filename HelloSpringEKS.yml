@@ -1,34 +1,31 @@
+kind: Service
 apiVersion: v1
-kind: ReplicationController
 metadata:
-  labels:
-    name: hellospringeks
-  name: hellospringeks
+  name: hello
+spec:
+  type: LoadBalancer
+  selector:
+    app: hello
+  ports:
+    - name: http
+      protocol: TCP
+      # ELB's port
+      port: 8080
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: hello
 spec:
   replicas: 1
+  selector:
+    matchLabels:
+      app: hello
   template:
     metadata:
       labels:
-        name: hellospringeks
+        app: hello
     spec:
       containers:
-      - image: naresh240/hellospringeks
-        name: hellospringeks
-        ports:
-        - name: hellospringeks
-          containerPort: 8080
----
-# Node Port Service
-apiVersion: v1
-kind: Service
-metadata:
-  labels:
-    name: hellospringeks
-  name: hellospringeks
-spec:
-  type: LoadBalancer
-  ports:
-    - port: 8080
-      targetPort: 8080
-  selector:
-    name: hellospringeks
+        - name: hello
+          image: naresh240/hellospringeks
