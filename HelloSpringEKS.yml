@@ -12,10 +12,10 @@ spec:
         name: HelloSpringEKS
     spec:
       containers:
-      - image: naresh240/HelloSpringEKS
-        name: HelloSpringEKS
+      - image: naresh240/hellospringeks
+        name: hellospringeks
         ports:
-        - name: HelloSpringEKS
+        - name: hellospringeks
           containerPort: 8080      
 ---
 # Node Port Service
