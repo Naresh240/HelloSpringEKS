@@ -8,7 +8,6 @@
 		<version>2.1.2.RELEASE</version>
 		<relativePath/> <!-- lookup parent from repository -->
 		
-	<!-- demo project ..>
 	</parent>
 	<groupId>com.spjenk</groupId>
 	<artifactId>hello</artifactId>
